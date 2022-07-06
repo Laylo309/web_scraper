@@ -1,0 +1,9 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<h1>WebScrappers#index</h1>
+
+<br>
+<br>
+<%=link_to 'Scrape', scrape_news_index_path %>
