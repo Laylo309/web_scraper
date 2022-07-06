@@ -16,4 +16,7 @@ class NewsController < ApplicationController
   rescue StandardError => e
     flash.now[:alert] = "Error: #{e}"
   end
+
+  def show
+  end
 end

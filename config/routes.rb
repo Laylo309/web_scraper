@@ -1,4 +1,5 @@
 # Rails.application.routes.draw do
+
 # #  namespace :v1, defaults: {format: 'json'} do 
 # #   get 'news', to: 'news#scrape'
 # #  end
@@ -10,9 +11,9 @@
 
 
 Rails.application.routes.draw do
-  resources :news do
-    post '/scrape', to: 'news#scrape',on: :collection
+  resources :posts do
+    match '/scrape', to: 'posts#scrape', via: :post, on: :collection
   end
 
-  root to: 'news#index'
+  root to: 'posts#index'
 end
