@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def scrape
-    url = 'https://kun.uz/news/category/tehnologia'
+    url = 'https://kun.uz/en/news/category/tech'
     @response = PostsSpider.process(url)
     if @response[:status] == :completed && @response[:error].nil?
       flash.now[:notice] = "Successfully scraped url"
