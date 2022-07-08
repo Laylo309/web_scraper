@@ -45,15 +45,15 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
 
   # Easy installation and use of web drivers to run system tests with browsers
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'react-rails'
-gem  'nokogiri'
+gem 'nokogiri'
 gem 'kimurai'
 gem 'selenium-webdriver', '>= 4.0.0.rc1'
 gem 'webdrivers'
 gem 'capybara', '>= 3.26'
+gem 'rack-cors'

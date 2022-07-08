@@ -1,19 +1,13 @@
-# Rails.application.routes.draw do
-
-# #  namespace :v1, defaults: {format: 'json'} do 
-# #   get 'news', to: 'news#scrape'
-# #  end
-# resources :news 
-# get 'scrape', to: 'news#scrape', as: :scrape
-
-# root to: 'news#index'
-# end
-
-
 Rails.application.routes.draw do
-  resources :posts do
-    match '/scrape', to: 'posts#scrape', via: :post, on: :collection
+  namespace :v1, defaults: { format: 'json' } do
+    resources :posts do
+      match '/scrape', to: 'posts#scrape', via: :post, on: :collection
+    end
   end
 
-  root to: 'posts#index'
+  get '*page', to: 'static#index', constraints: lambda { |req|
+    !req.xhr? && req.format.html?
+  }
+
+  root 'static#index'
 end
