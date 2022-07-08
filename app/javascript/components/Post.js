@@ -5,15 +5,12 @@ import { getPosts } from '../redux/Posts/post';
 
 const Post = () => {
   const dispatch = useDispatch();
-  const post= useSelector((state) => state.post);
+  const post = useSelector((state) => state.post);
 
   return (
     <div>
       Post:
-      <button
-        className="gePostsBtn"
-        onClick={() => dispatch(getPosts())}
-      >
+      <button className="getPostsBtn" onClick={() => dispatch(getPosts())}>
         Scrape
       </button>
       <br />
