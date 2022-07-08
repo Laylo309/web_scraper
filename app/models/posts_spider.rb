@@ -14,7 +14,8 @@ class PostsSpider < Kimurai::Base
       item = {}
 
       item[:title] = post.css('a.news__title')&.text&.squish
-      item[:link] = "#{url.split('/')[0]}//#{url.split('/')[2]}#{post.css('a.news__title').attribute('href').text&.squish}"
+      item[:link] =
+        "#{url.split('/')[0]}//#{url.split('/')[2]}#{post.css('a.news__title').attribute('href').text&.squish}"
       item[:created_time] = post.css('div.news-meta span')&.text&.squish
 
       begin

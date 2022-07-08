@@ -14,13 +14,21 @@ const Post = () => {
         Scrape
       </button>
       <br />
-      { posts.map((post, id) => {
-        return (<ul key={id} style={{display:'flex', flexDirection: 'column'}}>
-          <li>Title: <span>{post.title}</span></li>
-          <li>Link: <a href={post.link}>Visit Website</a></li>
-          <li>Date: <span>{post.created_time}</span></li>
-        </ul>)
-      }) }
+      {posts.map((post, id) => {
+        return (
+          <ul key={id} style={{ display: 'flex', flexDirection: 'column' }}>
+            <li>
+              Title: <span>{post.title}</span>
+            </li>
+            <li>
+              Link: <a href={post.link}>Visit Website</a>
+            </li>
+            <li>
+              Date: <span>{post.created_time}</span>
+            </li>
+          </ul>
+        );
+      })}
     </div>
   );
 };
