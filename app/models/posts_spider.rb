@@ -14,9 +14,6 @@ class PostsSpider < Kimurai::Base
 
     big_news_container = doc.at('a.big-news')
     parse_big_news(big_news_container, url: url)
-
-
-
   end
 
   def parse_big_news(elem, url:)
