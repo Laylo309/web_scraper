@@ -9,13 +9,12 @@ class PostsSpider < Kimurai::Base
     self.crawl!
   end
 
-
   def parse(response, url:, data: {})
     response.xpath("//div[@class='news']").each do |post|
       item = {}
       puts item
       item[:title] = post.css('a.news__title')&.text&.squish
-      item[:link]= post.css('div.news a').attribute["href"]&.text&.squish.gsub(/\n/, "")
+      item[:link] = post.css('div.news a').attribute["href"]&.text&.squish.gsub(/\n/, "")
       item[:created_time] = post.css('div.news-meta')&.text&.squish
       Post.where(item).first_or_create
     end
