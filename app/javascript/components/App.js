@@ -10,7 +10,7 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={'Home!'} />
+          <Route exact path="/" element={'Home!'} /> 
           <Route path="/posts" element={<Post />} />
         </Routes>
       </BrowserRouter>

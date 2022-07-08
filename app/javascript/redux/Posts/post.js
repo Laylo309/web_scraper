@@ -14,26 +14,19 @@ export function getPostsSuccess(payload) {
 }
 
 export const getPosts = () => async (dispatch) => {
-  try {
-    await fetch(URL, {
-      Method: 'POST',
-      Headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json',
-      },
-      Body: body,
-      Cache: 'default',
-    });
-    let response = await (await fetch('http://localhost:3000/v1/posts'));
-    console.log(response);
-    dispatch(getPostsSuccess(response));
-  } catch (error) {}
+  await fetch(URL, {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json; charset=UTF-8' },
+  });
+  let response = await fetch('http://localhost:3000/v1/posts');
+  let json = await response.json();
+  dispatch(getPostsSuccess(json));
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POSTS_SUCCESS:
-      return { ...state, posts: { ...state.posts, ...action.payload } };
+      return { ...state, posts: [...action.payload.posts] };
     default:
       return state;
   }

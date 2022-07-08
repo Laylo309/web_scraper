@@ -5,7 +5,7 @@ import { getPosts } from '../redux/Posts/post';
 
 const Post = () => {
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.post);
+  const { posts } = useSelector((state) => state.post);
 
   return (
     <div>
@@ -14,9 +14,13 @@ const Post = () => {
         Scrape
       </button>
       <br />
-      <span>{post.post}</span>
-      <span>{post.link}</span>
-      <span>{post.createdTime}</span>
+      { posts.map((post, id) => {
+        return (<ul key={id} style={{display:'flex', flexDirection: 'column'}}>
+          <li>Title: <span>{post.title}</span></li>
+          <li>Link: <a href={post.link}>Visit Website</a></li>
+          <li>Date: <span>{post.created_time}</span></li>
+        </ul>)
+      }) }
     </div>
   );
 };
